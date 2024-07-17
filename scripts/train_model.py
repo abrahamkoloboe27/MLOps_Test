@@ -6,7 +6,7 @@ from sklearn.linear_model import LinearRegression
 import joblib
 
 # Chemin vers votre fichier de données
-data_path = 'data/Housing.csv'
+data_path = 'data/Housing.csv' # Remplacer 'data_path' par le chemin de votre fichier de données
 
 # Charger les données
 df = pd.read_csv(data_path)
