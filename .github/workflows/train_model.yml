@@ -1,0 +1,36 @@
+name: Train Housing Price Prediction Model
+
+on:
+  push:
+    branches:
+      - main  # Exécuter uniquement lorsque du code est poussé sur la branche principale
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'  # Version de Python que vous utilisez
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Train and save model
+        run: |
+          python scripts/train_model.py
+
+      - name: Commit model file
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add models/housing_price_prediction_model.pkl
+          git commit -m "Add trained housing price prediction model"
+          git push
