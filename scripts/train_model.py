@@ -23,7 +23,7 @@ s = setup(df,
           )
 
 # Comparer les modèles
-best_model = compare_models(sort="rmse", n_select=3)
+best_model = compare_models(["ridge", "rf","knn","lasso","lr"],sort="rmse", n_select=3)
 best_model
 
 # Highlight the minimum value of each column
