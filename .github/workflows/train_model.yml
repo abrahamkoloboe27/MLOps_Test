@@ -31,6 +31,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add models/housing_price_prediction_model.pkl
+          git add scripts/housing_price_prediction_model.pkl
           git commit -m "Add trained housing price prediction model"
           git push
