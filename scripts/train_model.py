@@ -6,7 +6,7 @@ from sklearn.linear_model import LinearRegression
 import joblib
 
 # Chemin vers votre fichier de données
-data_path = '../data/Housing.csv'
+data_path = 'Housing.csv'
 
 # Charger les données
 df = pd.read_csv(data_path)
@@ -25,7 +25,7 @@ model = LinearRegression()
 model.fit(X_train, y_train)
 
 # Chemin pour sauvegarder le modèle
-model_path = '../models/housing_price_prediction_model.pkl'
+model_path = 'housing_price_prediction_model.pkl'
 
 # Sauvegarder le modèle formé
 joblib.dump(model, model_path)
