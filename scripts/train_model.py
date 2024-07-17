@@ -19,7 +19,7 @@ s = setup(df,
           fold=10,
           numeric_features = ['area', 'bedrooms', 'bathrooms', 'stories', 'parking'],
           categorical_features = ['mainroad', 'guestroom', 'basement', 'hotwaterheating', 'airconditioning', 'prefarea', 'furnishingstatus'],
-          profile = True
+          profile = False
           )
 
 # Comparer les modèles
