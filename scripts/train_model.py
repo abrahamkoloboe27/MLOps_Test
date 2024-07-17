@@ -42,4 +42,4 @@ best_model_tuned = compare_models(tuned_models, sort="rmse", n_select=3)
 #Finalize the best model
 final_model = finalize_model(best_model_tuned[0])
 
-save_model(final_model, 'models/housing_price_prediction_model')
+save_model(final_model, 'housing_price_prediction_model')
