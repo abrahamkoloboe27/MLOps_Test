@@ -46,3 +46,6 @@ best_model = create_model("lr")
 #final_model = finalize_model(best_model_tuned[0])
 save_model(best_model, 'housing_price_prediction_model')
 #save_model(final_model, 'housing_price_prediction_model')
+
+# Copier housing_price_prediction_model.pkl dans le dossier API
+joblib.dump(best_model, 'API/housing_price_prediction_model.pkl')
