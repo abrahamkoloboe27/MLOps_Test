@@ -50,5 +50,5 @@ save_model(best_model, 'housing_price_prediction_model')
 # Obetenez le path actuel
 import os
 current_path = os.getcwd()
-
+print(current_path)
 joblib.dump(best_model, os.path.join(current_path, 'housing_price_prediction_model.pkl'))
