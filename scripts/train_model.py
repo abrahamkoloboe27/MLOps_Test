@@ -2,7 +2,6 @@
 
 import pandas as pd
 from pycaret.regression import create_model, setup, save_model
-import joblib
 
 
 
@@ -48,4 +47,10 @@ save_model(best_model, 'housing_price_prediction_model')
 #save_model(final_model, 'housing_price_prediction_model')
 
 # Copier housing_price_prediction_model.pkl dans le dossier API
-joblib.dump(best_model, 'API/housing_price_prediction_model.pkl')
+# Obetenez le path actuel
+import os
+current_path = os.getcwd()
+# Copier le fichier dans le dossier API
+import shutil
+shutil.copy('API/housing_price_prediction_model.pkl', current_path)
+
