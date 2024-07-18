@@ -2,7 +2,7 @@
 
 import pandas as pd
 from pycaret.regression import create_model, setup, save_model
-
+import joblib
 
 
 # Chemin vers votre fichier de données
