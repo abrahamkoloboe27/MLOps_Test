@@ -13,4 +13,6 @@ jobs:
       - name: Pull Docker image
         run: sudo docker pull zach27/github_actions:API_MLOps
       - name: Run Docker Container
-        run: sudo docker run -d -p 8000:8000  zach27/github_actions:API_MLOps
+        run: |
+          container_id=$(sudo docker run -d -p 8000:8000 zach27/github_actions:API_MLOps)
+          sudo docker exec -it $container_id uvicorn main:app --host 0.0.0.0 --port 8000
