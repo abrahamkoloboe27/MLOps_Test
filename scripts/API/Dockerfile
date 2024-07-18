@@ -7,7 +7,7 @@ WORKDIR /app
 # Copiez les fichiers de dépendances vers le conteneur
 # Copier tous les fichiers du dossier API dans le conteneur 
 
-COPY API .
+COPY scripts/API .
 
 
 #Upgrade pip
