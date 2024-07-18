@@ -5,13 +5,13 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # Copiez les fichiers de dépendances vers le conteneur
-COPY "/home/runner/work/MLOps_Test/MLOps_Test/scripts/API" .
+COPY . .
 
 
 #Upgrade pip
 RUN pip install --upgrade pip
 # Installez les dépendances
-RUN pip install --no-cache-dir -r "/home/runner/work/MLOps_Test/MLOps_Test/scripts/API/requirements.txt"
+RUN pip install --no-cache-dir -r requirements_.txt
 
 # Install the GNU OpenMP library
 #RUN apt-get update && apt-get install -y libgomp1
