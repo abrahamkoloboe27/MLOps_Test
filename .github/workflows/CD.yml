@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Pull Docker image
         run: sudo docker pull zach27/github_actions:API_MLOps
