@@ -5,13 +5,13 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # Copiez les fichiers de dépendances vers le conteneur
-COPY . .
+COPY "/home/runner/work/MLOps_Test/MLOps_Test/scripts/API" .
 
 
 #Upgrade pip
 RUN pip install --upgrade pip
 # Installez les dépendances
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r "/home/runner/work/MLOps_Test/MLOps_Test/scripts/API/requirements.txt"
 
 # Install the GNU OpenMP library
 #RUN apt-get update && apt-get install -y libgomp1
@@ -23,4 +23,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 8000
 
 # Commande pour démarrer l'application
-CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
