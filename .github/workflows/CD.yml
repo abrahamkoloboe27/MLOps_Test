@@ -1,0 +1,16 @@
+name: CD Pipeline
+
+on:
+  workflow_run:
+    workflows: ["train_model"]
+    types:
+      - completed
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - name: Pull Docker image
+        run: sudo docker pull zach27/github_actions:API_MLOps
+      - name: Run Docker Container
+        run: sudo docker run -d -p 8000:8000  zach27/github_actions:API_MLOps
