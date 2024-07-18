@@ -27,10 +27,18 @@ jobs:
         run: |
           python scripts/train_model.py
 
-      - name: Commit model file
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add scripts/housing_price_prediction_model.pkl
-          git commit -m "Add trained housing price prediction model"
-          git push
+      - name: Upload model.keras
+        uses: actions/upload-artifact@v2
+        with:
+          name: model
+          path: model.keras
+    
+      - name: Create Release
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+            repo_token: "${{ secrets.GITHUB_TOKEN }}"
+            automatic_release_tag: "latest"
+            prerelease: false
+            title: "Model"
+            files: |
+              model.keras
