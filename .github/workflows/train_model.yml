@@ -35,7 +35,7 @@ jobs:
         uses: actions/create-release@latest
         with:
           tag_name: model_test_${{ github.run_number }}_${{ github.run_attempt }}
-          release_name: Model Release ${{ github.run_number }}
+          release_name: Model
           body: |
             Changes in this Release:
             - Model trained and saved
