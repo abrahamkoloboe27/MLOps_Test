@@ -5,7 +5,8 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # Copiez les fichiers de dépendances vers le conteneur
-COPY requirements.txt .
+COPY . .
+
 
 #Upgrade pip
 RUN pip install --upgrade pip
@@ -16,7 +17,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 #RUN apt-get update && apt-get install -y libgomp1
 
 # Copiez le reste du code de l'application dans le conteneur
-COPY . .
+
 
 # Exposez le port sur lequel l'application va tourner
 EXPOSE 8000
