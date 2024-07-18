@@ -25,13 +25,13 @@ jobs:
 
       - name: Train and save model
         run: |
-          python scripts/train_model.py
+          python /home/runner/work/MLOps_Test/MLOps_Test/scripts/train_model.py
 
       - name: Upload model
         uses: actions/upload-artifact@v2
         with:
           name: model
-          path: scripts/housing_price_prediction_model.pkl
+          path: /home/runner/work/MLOps_Test/MLOps_Test/scripts/housing_price_prediction_model.pkl
     
       - name: Create Release
         uses: marvinpinto/action-automatic-releases@latest
@@ -41,4 +41,4 @@ jobs:
             prerelease: false
             title: "Model"
             files: |
-              scripts/housing_price_prediction_model.pkl
+              /home/runner/work/MLOps_Test/MLOps_Test/scripts/housing_price_prediction_model.pkl
