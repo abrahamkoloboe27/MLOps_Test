@@ -4,7 +4,8 @@ on:
   push:
     branches:
       - main  # Exécuter uniquement lorsque du code est poussé sur la branche principale
-
+permissions:
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
