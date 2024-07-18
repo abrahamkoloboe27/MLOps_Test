@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main  # Exécuter uniquement lorsque du code est poussé sur la branche principale
+
 permissions:
   contents: write
 jobs:
@@ -31,14 +32,14 @@ jobs:
       - name: Upload model
         uses: actions/upload-artifact@v2
         with:
-          name: model
+          name: Model trained and saved
           path: housing_price_prediction_model.pkl
     
       - name: Create Release
         uses: actions/create-release@latest
         with:
           tag_name: latest
-          release_name: Release ${{ github.run_number }}
+          release_name: Model trained and saved
           body: |
             Changes in this Release:
             - Model trained and saved
