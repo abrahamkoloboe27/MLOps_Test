@@ -27,7 +27,7 @@ jobs:
         run: |
           python scripts/train_model.py
 
-      - name: Upload model.keras
+      - name: Upload model
         uses: actions/upload-artifact@v2
         with:
           name: model

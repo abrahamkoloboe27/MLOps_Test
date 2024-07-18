@@ -4,6 +4,11 @@ import pandas as pd
 from pycaret.regression import *
 import joblib
 
+
+# Obtenir le chemin du répertoire courant
+import os
+current_dir = os.path.dirname(__file__)
+print(current_dir)
 # Chemin vers votre fichier de données
 data_path = 'data/Housing.csv' # Remplacer 'data_path' par le chemin de votre fichier de données
 
@@ -42,4 +47,4 @@ best_model_tuned = compare_models(tuned_models, sort="rmse", n_select=3)
 #Finalize the best model
 final_model = finalize_model(best_model_tuned[0])
 
-save_model(final_model, 'housing_price_prediction_model')
+save_model(final_model, current_dir+'housing_price_prediction_model')
