@@ -28,13 +28,6 @@ jobs:
       - name: Train and save model
         run: |
           python /home/runner/work/MLOps_Test/MLOps_Test/scripts/train_model.py
-
-      - name: Upload model
-        uses: actions/upload-artifact@v2
-        with:
-          name: Model
-          path: housing_price_prediction_model.pkl
-    
       - name: Create Release
         uses: actions/create-release@latest
         with:
@@ -47,3 +40,10 @@ jobs:
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload model
+        uses: actions/upload-artifact@v2
+        with:
+          name: Model
+          path: housing_price_prediction_model.pkl
+    
+      
