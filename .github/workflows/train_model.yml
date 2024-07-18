@@ -86,7 +86,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
   deploy_to_ec2 :
 
-    runs-on: MLOps_test
+    runs-on: self-hosted
     needs: docker_build
     steps:
     - name: Pull Docker image
