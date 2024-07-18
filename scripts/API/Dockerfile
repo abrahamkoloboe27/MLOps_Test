@@ -5,7 +5,9 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # Copiez les fichiers de dépendances vers le conteneur
-COPY . .
+# Copier tous les fichiers du dossier API dans le conteneur 
+
+COPY API .
 
 
 #Upgrade pip
