@@ -32,14 +32,14 @@ jobs:
       - name: Upload model
         uses: actions/upload-artifact@v2
         with:
-          name: Model trained and saved
+          name: Model
           path: housing_price_prediction_model.pkl
     
       - name: Create Release
         uses: actions/create-release@latest
         with:
-          tag_name: latest
-          release_name: Model trained and saved
+          tag_name: model_test
+          release_name: Model
           body: |
             Changes in this Release:
             - Model trained and saved
