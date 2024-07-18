@@ -36,9 +36,12 @@ jobs:
       - name: Create Release
         uses: actions/create-release@latest
         with:
-            repo_token: "${{ secrets.GITHUB_TOKEN }}"
-            automatic_release_tag: "latest"
-            prerelease: false
-            title: "Model"
-            files: |
-              housing_price_prediction_model.pkl
+          tag_name: latest
+          release_name: Release ${{ github.run_number }}
+          body: |
+            Changes in this Release:
+            - Model trained and saved
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
