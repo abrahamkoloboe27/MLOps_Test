@@ -34,7 +34,7 @@ jobs:
           path: housing_price_prediction_model.pkl
     
       - name: Create Release
-        uses: marvinpinto/action-automatic-releases@latest
+        uses: actions/create-release@latest
         with:
             repo_token: "${{ secrets.GITHUB_TOKEN }}"
             automatic_release_tag: "latest"
