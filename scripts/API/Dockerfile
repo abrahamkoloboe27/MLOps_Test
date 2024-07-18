@@ -13,7 +13,7 @@ RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Install the GNU OpenMP library
-RUN apt-get update && apt-get install -y libgomp1
+#RUN apt-get update && apt-get install -y libgomp1
 
 # Copiez le reste du code de l'application dans le conteneur
 COPY . .

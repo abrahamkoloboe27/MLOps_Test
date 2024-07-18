@@ -1,6 +1,6 @@
 # main.py
-import pandas as pd
-from pycaret.regression import load_model, predict_model
+#import pandas as pd
+#from pycaret.regression import load_model, predict_model
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
 # Create the app
@@ -33,8 +33,8 @@ def read_root():
     return {"message": "Welcome to the House Price Prediction API"}
 
 # Define predict function
-@app.post("/predict", response_model=OutputModel)
-def predict(data: InputModel):
-    data = pd.DataFrame([data.dict()])
-    predictions = predict_model(model, data=data)
-    return {"prediction": predictions["prediction_label"].iloc[0]}
+#@app.post("/predict", response_model=OutputModel)
+#def predict(data: InputModel):
+#    data = pd.DataFrame([data.dict()])
+#    predictions = predict_model(model, data=data)
+#    return {"prediction": predictions["prediction_label"].iloc[0]}
