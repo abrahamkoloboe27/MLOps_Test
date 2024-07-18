@@ -44,9 +44,8 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
             upload_url: ${{ steps.create_release.outputs.upload_url }}
-            asset_path: ./housing_price_prediction_model.pkl
-            asset_name: housing_price_prediction_model.pkl
-            asset_content_type: application/octet-stream
+            path: ./housing_price_prediction_model.pkl
+            name: housing_price_prediction_model.pkl
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
