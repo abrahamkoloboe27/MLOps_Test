@@ -4,6 +4,10 @@
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
 # Create the app
+import os
+current_path = os.getcwd()
+print(current_path)
+
 app = FastAPI()
 
 # Load trained Pipeline
@@ -38,3 +42,5 @@ def read_root():
 #    data = pd.DataFrame([data.dict()])
 #    predictions = predict_model(model, data=data)
 #    return {"prediction": predictions["prediction_label"].iloc[0]}
+
+
