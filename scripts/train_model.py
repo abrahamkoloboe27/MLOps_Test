@@ -1,5 +1,89 @@
 # scripts/train_model.py
 
+
+
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split, cross_val_score, KFold
+from sklearn.linear_model import Ridge, Lasso, LinearRegression
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.neighbors import KNeighborsRegressor
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+from sklearn.metrics import mean_squared_error
+import joblib
+import os
+
+# Chemin vers votre fichier de données
+data_path = 'data/Housing.csv'  # Remplacer 'data_path' par le chemin de votre fichier de données
+
+# Charger les données
+df = pd.read_csv(data_path)
+
+# Séparer les caractéristiques et la cible
+X = df.drop(columns='price')
+y = df['price']
+
+# Séparer les colonnes numériques et catégorielles
+numeric_features = ['area', 'bedrooms', 'bathrooms', 'stories', 'parking']
+categorical_features = ['mainroad', 'guestroom', 'basement', 'hotwaterheating', 'airconditioning', 'prefarea', 'furnishingstatus']
+
+# Préparer le préprocesseur
+preprocessor = ColumnTransformer(
+    transformers=[
+        ('num', StandardScaler(), numeric_features),
+        ('cat', OneHotEncoder(), categorical_features)
+    ])
+
+# Initialiser les modèles à comparer
+models = {
+    'Ridge': Ridge(),
+    'RandomForest': RandomForestRegressor(),
+    'KNeighbors': KNeighborsRegressor(),
+    'Lasso': Lasso(),
+    'LinearRegression': LinearRegression()
+}
+
+# Initialiser la validation croisée
+kf = KFold(n_splits=10, shuffle=True, random_state=123)
+
+# Comparer les modèles
+# Initialize variables for best model selection
+best_model_name = None
+best_model = None
+best_score = float('inf')
+
+for name, model in models.items():
+    # Créer un pipeline
+    pipeline = Pipeline(steps=[('preprocessor', preprocessor),
+                               ('model', model)])
+    
+    # Calculer les scores avec validation croisée
+    scores = cross_val_score(pipeline, X, y, cv=kf, scoring='neg_root_mean_squared_error')
+    mean_score = -scores.mean()
+    
+    print(f'{name} RMSE: {mean_score}')
+    
+    # Sélectionner le meilleur modèle
+    if mean_score < best_score:
+        best_score = mean_score
+        best_model_name = name
+        best_model = pipeline
+
+# Entraîner le meilleur modèle sur l'ensemble d'entraînement complet
+best_model.fit(X, y)
+
+# Sauvegarder le meilleur modèle
+current_path = os.getcwd()
+model_path = os.path.join(current_path, 'housing_price_prediction_model.pkl')
+joblib.dump(best_model, model_path)
+
+print(f'Best model: {best_model_name} with RMSE: {best_score}')
+print(f'Model saved to: {model_path}')
+
+
+
 #import pandas as pd
 #from pycaret.regression import create_model, setup, save_model
 #import joblib
