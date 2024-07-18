@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: model
-          path: model.keras
+          path: scripts/housing_price_prediction_model.pkl
     
       - name: Create Release
         uses: marvinpinto/action-automatic-releases@latest
@@ -41,4 +41,4 @@ jobs:
             prerelease: false
             title: "Model"
             files: |
-              model.keras
+              scripts/housing_price_prediction_model.pkl
