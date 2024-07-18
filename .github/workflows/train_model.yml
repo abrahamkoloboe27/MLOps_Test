@@ -29,7 +29,7 @@ jobs:
       - name: Train and save model
         run: |
           python /home/runner/work/MLOps_Test/MLOps_Test/scripts/train_model.py
-
+      
       - name: Create Release
         id: create_release
         uses: actions/create-release@latest
@@ -50,5 +50,6 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./housing_price_prediction_model.pkl
           asset_name: housing_price_prediction_model.pkl
+          asset_content_type: application/octet-stream
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
