@@ -5,25 +5,22 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # Copiez les fichiers de dépendances vers le conteneur
-# Copier tous les fichiers du dossier API dans le conteneur 
+COPY requirements_.txt .
 
-COPY scripts/API .
-COPY /home/runner/work/MLOps_Test/MLOps_Test/housing_price_prediction_model.pkl .
-
-
-#Upgrade pip
+# Upgrade pip
 RUN pip install --upgrade pip
+
 # Installez les dépendances
 RUN pip install --no-cache-dir -r requirements_.txt
 
-# Install the GNU OpenMP library
-#RUN apt-get update && apt-get install -y libgomp1
+# Copier tous les fichiers du dossier API dans le conteneur 
+COPY scripts/API /app
 
-# Copiez le reste du code de l'application dans le conteneur
-
+# Copier le modèle dans le conteneur
+COPY housing_price_prediction_model.pkl /app
 
 # Exposez le port sur lequel l'application va tourner
 EXPOSE 8000
 
 # Commande pour démarrer l'application
-CMD ["uvicorn", "api:app", "--host","0.0.0.0", "--port" ,"8000" ,"--reload"]
+CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
