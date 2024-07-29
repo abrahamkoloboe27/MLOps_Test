@@ -62,6 +62,7 @@ jobs:
 
     - name: Build Docker image
       run: |
+        pwd
         docker build . --file /home/runner/work/MLOps_Test/MLOps_Test/scripts/API/Dockerfile --tag zach27/github_actions:API_MLOps
         docker images -a
     - name: Login to Docker Hub
