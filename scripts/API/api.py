@@ -3,6 +3,8 @@
 #from pycaret.regression import load_model, predict_model
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
+import joblib
+import pandas as pd
 # Create the app
 
 
@@ -10,6 +12,12 @@ app = FastAPI()
 
 
 def load_model(model_name):
+    model_path = f"models/{model_name}.pkl"
+    model = joblib.load(model_path)
+    print("Model loaded")
+    return model
+
+model = load_model("housing_price_prediction_model")
 # Load trained Pipeline
 #model = load_model("housing_price_prediction_model")
 
@@ -45,4 +53,7 @@ def read_root():
 
 # Define predict function
 @app.post("/predict", response_model=OutputModel)
-def predict(data: InputModel
+def predict(data: InputModel):
+    data = pd.DataFrame([data.dict()])
+    predictions = model.predict(data)
+    return {"prediction": predictions[0]}
