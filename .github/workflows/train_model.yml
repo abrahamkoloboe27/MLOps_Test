@@ -26,19 +26,16 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Train model
+      - name: Train and save model
         run: |
-          python scripts/train_model.py
-
-      - name: List files for debugging
-        run: |
-          ls -al /home/runner/work/MLOps_Test/MLOps_Test/
-
+          python /home/runner/work/MLOps_Test/MLOps_Test/scripts/train_model.py
+      
       - name: Create Release
+        id: create_release
         uses: actions/create-release@latest
         with:
           tag_name: model_test_${{ github.run_number }}_${{ github.run_attempt }}
-          release_name: Model Release ${{ github.run_number }}
+          release_name: Model
           body: |
             Changes in this Release:
             - Model trained and saved
@@ -51,7 +48,7 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: /home/runner/work/MLOps_Test/MLOps_Test/housing_price_prediction_model.pkl
+          asset_path: ./housing_price_prediction_model.pkl
           asset_name: housing_price_prediction_model.pkl
           asset_content_type: application/octet-stream
         env:
