@@ -42,5 +42,9 @@ def read_root():
 #    data = pd.DataFrame([data.dict()])
 #    predictions = predict_model(model, data=data)
 #    return {"prediction": predictions["prediction_label"].iloc[0]}
+import os
+current_path = os.getcwd()
+print(current_path)
+
 
 
