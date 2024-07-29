@@ -30,9 +30,9 @@ jobs:
         run: |
           python /home/runner/work/MLOps_Test/MLOps_Test/scripts/train_model.py
       
-      - name: Train and save model
+      - name: Check if model file exists
         run: |
-          python /home/runner/work/MLOps_Test/MLOps_Test/scripts/train_model.py
+          ls -l ./housing_price_prediction_model.pkl
 
       - name: Move model file
         run: |
