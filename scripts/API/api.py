@@ -4,12 +4,12 @@
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
 # Create the app
-import os
-current_path = os.getcwd()
-print(current_path)
+
 
 app = FastAPI()
 
+
+def load_model(model_name):
 # Load trained Pipeline
 #model = load_model("housing_price_prediction_model")
 
@@ -42,9 +42,7 @@ def read_root():
 #    data = pd.DataFrame([data.dict()])
 #    predictions = predict_model(model, data=data)
 #    return {"prediction": predictions["prediction_label"].iloc[0]}
-import os
-current_path = os.getcwd()
-print(current_path)
 
-
-
+# Define predict function
+@app.post("/predict", response_model=OutputModel)
+def predict(data: InputModel

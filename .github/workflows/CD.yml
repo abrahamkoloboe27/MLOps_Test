@@ -11,7 +11,10 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Pull Docker image
-        run: sudo docker pull zach27/github_actions:API_MLOps
+        run: |
+          sudo docker stop $(sudo docker ps -q)
+          sudo docker rmi -f $(sudo docker images -q)
+          sudo docker pull zach27/github_actions:API_MLOps
       - name: Run Docker Container
         run: |
           sudo docker run -d -p 8000:8000 zach27/github_actions:API_MLOps

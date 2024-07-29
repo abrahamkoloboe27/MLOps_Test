@@ -8,6 +8,7 @@ WORKDIR /app
 # Copier tous les fichiers du dossier API dans le conteneur 
 
 COPY scripts/API .
+COPY housing_price_prediction_model.pkl .
 
 
 #Upgrade pip
