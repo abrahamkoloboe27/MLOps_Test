@@ -27,8 +27,9 @@ jobs:
           pip install -r requirements.txt
 
       - name: Train and save model
-        run: |
-          python /home/runner/work/MLOps_Test/MLOps_Test/scripts/train_model.py
+        run: | 
+          cd scripts
+          python train_model.py
       
       - name: Create Release
         id: create_release
