@@ -8,7 +8,7 @@ WORKDIR /app
 # Copier tous les fichiers du dossier API dans le conteneur 
 
 COPY scripts/API .
-COPY /home/runner/work/MLOps_Test/MLOps_Test/housing_price_prediction_model.pkl .
+#COPY /home/runner/work/MLOps_Test/MLOps_Test/housing_price_prediction_model.pkl .
 
 #Upgrade pip
 RUN pip install --upgrade pip

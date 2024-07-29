@@ -30,6 +30,15 @@ jobs:
         run: |
           python /home/runner/work/MLOps_Test/MLOps_Test/scripts/train_model.py
       
+      - name: Train and save model
+        run: |
+          python /home/runner/work/MLOps_Test/MLOps_Test/scripts/train_model.py
+
+      - name: Move model file
+        run: |
+          cp ./housing_price_prediction_model.pkl ./scripts/API/
+
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@latest
