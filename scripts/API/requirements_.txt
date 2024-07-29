@@ -1,4 +1,6 @@
 pydantic
+pandas
+
 fastapi
 uvicorn
 
